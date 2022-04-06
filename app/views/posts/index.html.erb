@@ -1,0 +1,20 @@
+<h1>Mein Blog</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <h2>
+        <%= post.title %>
+      </h2>
+      <p>
+        <%= post.text %>
+      </p>
+      <div>
+        Funktionen:
+
+        <%= link_to 'edit', edit_post_path(post) %>
+        <%= button_to 'Löschen', post_path(post), method: :delete %>
+      </div>
+    </li>
+  <% end %>
+</ul>

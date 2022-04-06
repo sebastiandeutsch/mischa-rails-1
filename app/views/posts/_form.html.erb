@@ -1,0 +1,31 @@
+<ul>
+  <%= form_with model: @post do |f| %>
+    <% if @post.errors.any? %>
+      <ol>
+        <% @post.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+    <li>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </li>
+
+    <li>
+      <%= f.label :text %>
+      <%= f.text_area :text %>
+    </li>
+
+    <li>
+      <%= f.label :published %>
+      <%= f.check_box :published %>
+    </li>
+
+    <li>
+      <%= f.submit %>
+    </li>
+  <% end %>
+</ul>
