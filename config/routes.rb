@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   # get 'post/:id/edit' => 'posts#edit', as: :edit_post
   # patch 'post/:id' => 'posts#update'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 end

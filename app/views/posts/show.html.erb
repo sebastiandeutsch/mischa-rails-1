@@ -1,0 +1,49 @@
+<h2>
+  <%= @post.title %>
+</h2>
+<p>
+  <%= @post.text %>
+</p>
+
+<% if @post.comments.any? %>
+  <h3>
+    Kommentare
+  </h3>
+
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <p>
+          <%= comment.text %>
+        </p>
+        <div>
+          <%= comment.email %>
+        </div>
+        <div>
+          <%= button_to 'löschen', post_comment_path(@post, comment), method: :delete %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>
+  Kommentar schreiben
+</h3>
+
+
+<ul>
+  <%= form_with model: [@post, Comment.new] do |f| %>
+    <li>
+      <%= f.label :text %>
+      <%= f.text_area :text %>
+    </li>
+    <li>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </li>
+    <li>
+      <%= f.submit %>
+    </li>
+  <% end %>
+</ul>
